@@ -90,7 +90,7 @@ for anime in anime_inputs:
         st.markdown(f"### {anime}")
         if synopsis:
             first_sentence = synopsis.split(".")[0] + "."
-            st.markdown(f"📝{first_sentence}", unsafe_allow_html=True)
+            st.markdown(f"{first_sentence}", unsafe_allow_html=True)
             with st.expander(" devamını okumak için tıklayınız"):
                 st.markdown(synopsis, unsafe_allow_html=True)
 
