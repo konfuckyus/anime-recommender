@@ -82,7 +82,7 @@ for anime in anime_inputs:
     col1, col2 = st.columns([1, 4])
     with col1:
         if img_url:
-            st.image(img_url, width=50)
+            st.image(img_url, width=90)
         else:
             st.write(" Yok")
 
@@ -151,7 +151,8 @@ if st.button("Önerileri Getir"):
         col1, col2 = st.columns([1, 4])
         with col1:
             if img_url:
-                st.image(img_url, use_container_width=True)
+                st.image(img_url, width=150)  
+
             else:
                 st.write(" Yok")
 
