@@ -14,7 +14,7 @@ st.write("Beğendiğiniz 1-5 animeyi girin, size benzeyenleri önerelim.")
 # CSV kontrolü
 csv_path = "anime_cleaned.csv"
 if not os.path.exists(csv_path):
-    st.error("❌ 'anime_cleaned.csv' dosyası bulunamadı. Lütfen aynı klasöre ekleyin.")
+    st.error("'anime_cleaned.csv' dosyası bulunamadı. Lütfen aynı klasöre ekleyin.")
     st.stop()
 
 @st.cache_data(show_spinner=False)
@@ -72,7 +72,7 @@ if st.session_state.clear_anime_inputs:
     st.session_state.clear_anime_inputs = False
 else:
     anime_inputs = st.multiselect(
-        "🎯 Beğendiğiniz Animeleri Yazın ve Seçin:",
+        "Beğendiğiniz Animeleri Yazın ve Seçin:",
         options=autocomplete_list,
         max_selections=5
     )
@@ -84,18 +84,18 @@ for anime in anime_inputs:
         if img_url:
             st.image(img_url, width=90)
         else:
-            st.write("🖼️ Yok")
+            st.write(" Yok")
 
     with col2:
         st.markdown(f"### {anime}")
         if synopsis:
             first_sentence = synopsis.split(".")[0] + "."
-            st.markdown(f"📝 {first_sentence}", unsafe_allow_html=True)
-            with st.expander("📖 devamını okumak için tıklayınız"):
+            st.markdown(f"📝{first_sentence}", unsafe_allow_html=True)
+            with st.expander(" devamını okumak için tıklayınız"):
                 st.markdown(synopsis, unsafe_allow_html=True)
 
 # Temizleme butonu
-if st.button("❌ Seçilenleri Temizle"):
+if st.button("Seçilenleri Temizle"):
     st.session_state.clear_anime_inputs = True
     st.rerun()
 
@@ -105,7 +105,7 @@ if st.button("❌ Seçilenleri Temizle"):
 # =======================
 # 🔍 ÖNERİ MOTORU
 # =======================
-if st.button("🎯 Önerileri Getir"):
+if st.button("Önerileri Getir"):
     if not anime_inputs:
         st.warning("Lütfen en az 1 anime girin.")
         st.stop()
@@ -118,9 +118,9 @@ if st.button("🎯 Önerileri Getir"):
             idx = df[df["base_name"] == match[0]].index
             if not idx.empty:
                 matched_indices.append(idx[0])
-                st.success(f"✅ '{anime}' → '{match[0]}'")
+                st.success(f" '{anime}' → '{match[0]}'")
         else:
-            st.warning(f"⚠️ '{anime}' için eşleşme bulunamadı.")
+            st.warning(f" '{anime}' için eşleşme bulunamadı.")
 
     if not matched_indices:
         st.error("Hiçbir eşleşme bulunamadı.")
@@ -153,18 +153,18 @@ if st.button("🎯 Önerileri Getir"):
             if img_url:
                 st.image(img_url, use_container_width=True)
             else:
-                st.write("🖼️ Yok")
+                st.write(" Yok")
 
         with col2:
             st.markdown(f"### {row['name']}")
             st.markdown(
-                f"🎯 **Skor**: {row['score']:.2f}  \n"
-                f"🎬 **Tür**: {row['genres']}  \n"
-                f"📈 **Kalite**: {row['quality_score']:.2f}"
+                f" **Skor**: {row['score']:.2f}  \n"
+                f" **Tür**: {row['genres']}  \n"
+                f" **Kalite**: {row['quality_score']:.2f}"
             )
             if first_sentence:
-                st.markdown(f"📝 {first_sentence}", unsafe_allow_html=True)
+                st.markdown(f"{first_sentence}", unsafe_allow_html=True)
             if synopsis:
-                with st.expander("📖 devamını okumak için tıklayınız"):
+                with st.expander(" devamını okumak için tıklayınız"):
                     st.markdown(synopsis, unsafe_allow_html=True)
 
