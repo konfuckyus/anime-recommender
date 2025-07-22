@@ -8,7 +8,7 @@ import requests
 import os
 
 st.set_page_config(page_title="Anime Recommender", layout="wide")
-st.title("🎌 Anime Recommender System")
+st.title("Anime Recommender System")
 st.write("Beğendiğiniz 1-5 animeyi girin, size benzeyenleri önerelim.")
 
 # CSV kontrolü
@@ -60,7 +60,7 @@ def get_anime_info(anime_name):
 # =======================
 # 🎯 ARAYÜZ
 # =======================
-st.subheader("📥 Beğendiğiniz Animeleri Girin (En fazla 5 tane)")
+st.subheader("Beğendiğiniz Animeleri Girin (En fazla 5 tane)")
 
 autocomplete_list = get_autocomplete_options()
 
@@ -91,7 +91,7 @@ for anime in anime_inputs:
         if synopsis:
             first_sentence = synopsis.split(".")[0] + "."
             st.markdown(f"{first_sentence}", unsafe_allow_html=True)
-            with st.expander(" devamını okumak için tıklayınız"):
+            with st.expander("devamını okumak için tıklayınız"):
                 st.markdown(synopsis, unsafe_allow_html=True)
 
 # Temizleme butonu
@@ -142,7 +142,7 @@ if st.button("Önerileri Getir"):
     top10 = sorted(scored, key=lambda x: x[1], reverse=True)[:10]
     results = df.iloc[[i for i, _ in top10]].reset_index(drop=True)
 
-    st.subheader("🔝 En İyi 10 Öneri:")
+    st.subheader("En İyi 10 Öneri:")
 
     for idx, row in results.iterrows():
         img_url, synopsis = get_anime_info(row["name"])
