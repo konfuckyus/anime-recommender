@@ -82,7 +82,7 @@ for anime in anime_inputs:
     col1, col2 = st.columns([1, 4])
     with col1:
         if img_url:
-            st.image(img_url, width=90)
+            st.image(img_url, width=50)
         else:
             st.write(" Yok")
 
